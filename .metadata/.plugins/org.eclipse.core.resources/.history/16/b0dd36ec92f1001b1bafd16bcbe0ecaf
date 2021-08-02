@@ -1,0 +1,14 @@
+package com.team.roster.repositories;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.team.roster.domain.Integrante;
+
+public interface IntegranteRepository extends JpaRepository<Integrante, Long>{
+
+	Optional<Integrante> findByNomeContains(String name);
+
+
+}

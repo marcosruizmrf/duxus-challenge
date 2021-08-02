@@ -1,0 +1,30 @@
+package com.team.roster.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.team.roster.domain.Time;
+import com.team.roster.repositories.RosterRepository;
+
+@Service
+public class TimeService {
+	
+	@Autowired
+	private RosterRepository repository;
+
+	public List<Time> findAll() {
+		List<Time> list = repository.findAll();
+		return list;
+	}
+
+	public Time save(Time time) {
+		time.setId(null);
+		return repository.save(time);
+	}
+
+	
+	
+
+}

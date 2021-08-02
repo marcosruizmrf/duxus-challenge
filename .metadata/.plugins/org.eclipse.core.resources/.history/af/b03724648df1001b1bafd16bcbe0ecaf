@@ -1,0 +1,16 @@
+package com.team.roster.repositories;
+
+import java.util.Date;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.team.roster.domain.Time;
+
+public interface TimeRepository extends JpaRepository<Time, Long>{
+
+	Optional<Time> findById(Date bithDate);
+	
+	
+
+}

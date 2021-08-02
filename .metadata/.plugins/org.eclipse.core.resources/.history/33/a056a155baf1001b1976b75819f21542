@@ -1,0 +1,25 @@
+package com.team.roster.services;
+
+import java.util.Collection;
+import java.util.List;
+
+import com.team.roster.domain.ComposicaoTime;
+
+public class ComposicaoTimeService {
+
+	public List<ComposicaoTime> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ComposicaoTime save(ComposicaoTime composicaoTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Collection<ComposicaoTime> findByNomeConstains(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

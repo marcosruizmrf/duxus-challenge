@@ -1,0 +1,5 @@
+package com.team.challenge.repository;
+
+public interface Repository {
+
+}

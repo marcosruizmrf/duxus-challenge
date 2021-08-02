@@ -1,0 +1,25 @@
+package com.team.roster.services;
+
+import java.util.Arrays;
+
+import org.springframework.stereotype.Service;
+
+import com.team.roster.domain.Integrante;
+import com.team.roster.repositories.RosterRepository;
+
+@Service
+public class DBService {
+	
+	private RosterRepository rosterRepository;
+	
+	public void instanciaBaseDeDados() {
+		
+		Integrante i1 = new Integrante(null, "Santos", "Neymar", "Atacante");
+		Integrante i2 = new Integrante(null, "São Paulo", "Kaka", "Meia");
+		
+		rosterRepository.saveAll(Arrays.asList(i1, i2));
+		
+		
+	}
+
+}

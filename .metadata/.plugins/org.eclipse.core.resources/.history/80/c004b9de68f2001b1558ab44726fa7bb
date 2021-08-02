@@ -1,0 +1,39 @@
+package com.team.roster.resources;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.team.roster.domain.ComposicaoTime;
+import com.team.roster.services.ComposicaoTimeService;
+
+@RestController
+@RequestMapping("/escalacao")
+public class ComposicaoTimeResource {
+
+	@Autowired
+	private ComposicaoTimeService service;
+
+	@PostMapping("")
+    public ResponseEntity<ComposicaoTime> addABook(@RequestBody ComposicaoTime composicaoTime) {
+        return new ResponseEntity<ComposicaoTime>(service.saveOrUpdateATime(composicaoTime), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/all")
+    public Iterable<ComposicaoTime> getAllBookings(){
+        return service.findAll();
+    }
+
+    @GetMapping("/{bookId}")
+    public ResponseEntity<ComposicaoTime> getTimeById(@PathVariable Long id) {
+        return new ResponseEntity<ComposicaoTime>(service.findTimeById(id), HttpStatus.OK);
+    }
+
+	
+}

@@ -1,0 +1,15 @@
+package com.team.roster.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.team.roster.domain.Integrante;
+import com.team.roster.domain.Time;
+
+public interface IntegranteRepository extends JpaRepository<Integrante, Long>{
+
+	List<Integrante> findByNomeContains(String name);
+
+
+}

@@ -1,0 +1,21 @@
+package com.team.roster.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.team.roster.repositories.RosterRepository;
+
+@Service
+public class DBService {
+	
+	@Autowired
+	private RosterRepository rosterRepository;
+	
+	public void instanciaBaseDeDados() {
+		
+
+		
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.team.roster.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.team.roster.domain.Integrante;
+import com.team.roster.domain.Time;
+
+public interface RosterRepository extends JpaRepository<Integrante, Long>{
+
+	Time save(Time time);
+
+}

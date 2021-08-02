@@ -1,0 +1,16 @@
+package com.team.roster.repositories;
+
+import java.util.Date;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.team.roster.domain.ComposicaoTime;
+import com.team.roster.domain.Time;
+
+@Repository
+public interface ComposicaoTimeRepository extends JpaRepository<ComposicaoTime, Long>{
+
+	Optional<ComposicaoTime> findByNomeContains(Time time);
+
+}

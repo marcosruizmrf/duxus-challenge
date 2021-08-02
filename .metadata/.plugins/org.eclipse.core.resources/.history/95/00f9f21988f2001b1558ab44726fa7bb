@@ -1,0 +1,39 @@
+package com.team.roster.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.team.roster.domain.Integrante;
+import com.team.roster.repositories.IntegranteRepository;
+
+@Service
+public class IntegranteService {
+
+	@Autowired
+	private IntegranteRepository repository;
+
+	public List<Integrante> findAll() {
+		List<Integrante> list = repository.findAll();
+		return list;
+	}
+
+	public Integrante save(Integrante integrante) {
+		integrante.setId(null);
+		return repository.save(integrante);
+	}
+
+	public List<Integrante> findByNomeConstains(String name) {
+		List<Integrante> obj = repository.findByNomeContains(name);
+		return obj;
+	}
+	
+	public List<Integrante> findByFuncaoComum(String funcao) {
+		List<Integrante> obj = repository.findByFuncaoComum(funcao);
+		return obj;
+	}
+	
+
+
+}

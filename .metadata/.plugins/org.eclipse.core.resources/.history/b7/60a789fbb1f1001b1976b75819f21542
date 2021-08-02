@@ -1,0 +1,104 @@
+package com.team.roster.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Table(name = "time")
+@Entity
+public class Time implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private Date data;
+	
+	@ManyToOne
+	@JoinColumn(name = "composicaoTime_id")
+	private ComposicaoTime composicaoTime;
+	
+		
+	public Time() {
+		super();
+	}
+	
+	public Time(Long id, Date data, List<ComposicaoTime> composicaoTime, List<Integrante> integrantes) {
+		super();
+		this.id = id;
+		this.data = data;
+		this.composicaoTime = composicaoTime;
+		this.integrantes = integrantes;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.data = data;
+	}
+
+	public List<ComposicaoTime> getComposicaoTime() {
+		return composicaoTime;
+	}
+
+	public void setComposicaoTimes(List<ComposicaoTime> composicaoTime) {
+		this.composicaoTime = composicaoTime;
+	}
+
+	public List<Integrante> getIntegrantes() {
+		return integrantes;
+	}
+
+	public void setIntegrantes(List<Integrante> integrantes) {
+		this.integrantes = integrantes;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Time [id=" + id + ", data=" + data + ", composicaoTime=" + composicaoTime + ", integrantes="
+				+ integrantes + "]";
+	}
+
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Time other = (Time) obj;
+		return Objects.equals(id, other.id);
+	}	
+
+}

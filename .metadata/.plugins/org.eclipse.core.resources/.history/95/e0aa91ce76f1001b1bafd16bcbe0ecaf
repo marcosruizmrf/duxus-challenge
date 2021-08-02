@@ -1,0 +1,5 @@
+package com.team.roster.resources;
+
+public class TimeResource {
+
+}

@@ -1,0 +1,39 @@
+package com.team.roster.resources;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.team.roster.domain.Integrante;
+import com.team.roster.services.IntegranteService;
+
+@RestController
+@RequestMapping("/integrantes")
+public class IntegranteResource {
+	
+	@Autowired
+	private IntegranteService service;
+	
+	@GetMapping  //Listar integrantes
+	public ResponseEntity<List<Integrante>> listAll() {
+		List<Integrante> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@PostMapping  //Criar integrantes
+	@ResponseStatus(HttpStatus.CREATED)
+	public Integrante adicionar(@RequestBody Integrante integrante) {
+		return service.save(integrante);
+	}
+	
+	
+	
+}

@@ -1,0 +1,112 @@
+package com.team.roster.domain;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Table(name = "composicao_time")
+@Entity
+public class ComposicaoTime implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String teste;
+	
+	@ManyToOne
+	@JoinColumn
+	private Time time;
+	
+	
+	
+	public static ComposicaoTime converter(ComposicaoTime cp) {
+		 var composicaoTime = new ComposicaoTime();
+		 composicaoTime.setId(cp.getId());
+		 composicaoTime.setTime(cp.getTime());
+		 composicaoTime.setIntegrante(cp.getIntegrante());
+		 
+		 return composicaoTime;
+	 }
+	
+	
+	public ComposicaoTime() {
+		super();
+	}
+	
+	public ComposicaoTime(String teste, Long id, Time time, Integrante integrantes) {
+		super();
+		this.teste = teste;
+		this.id = id;
+		this.time = time;
+
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "ComposicaoTime [id=" + id + ", time=" + time + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ComposicaoTime other = (ComposicaoTime) obj;
+		return Objects.equals(id, other.id);
+	}
+
+
+	public String getTeste() {
+		return teste;
+	}
+
+
+	public void setTeste(String teste) {
+		this.teste = teste;
+	}
+
+
+
+	
+	
+}
+	
+

@@ -1,0 +1,40 @@
+package com.team.roster.services;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.team.roster.domain.Time;
+import com.team.roster.repositories.TimeRepository;
+
+import javassist.tools.rmi.ObjectNotFoundException;
+
+@Service
+public class TimeService {
+
+	@Autowired
+	private TimeRepository repository;
+		
+	//Listar todos os integrantes
+	public List<Time> findAll() {
+		List<Time> list = repository.findAll();
+		return list;
+	}
+
+	//Listar o integrante mais usado
+	public Time findByDate(Date bithDate) throws ObjectNotFoundException {
+		Optional<Time> obj = repository.findByDate(bithDate);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Obejto não encontrado! Id: " + bithDate + ", Tipo: " + Time.class.getName()));
+	}
+	
+	//Criar integrantes
+	public Time save(Time time) {
+		time.setId(null);
+		return repository.save(time);
+	}
+
+}

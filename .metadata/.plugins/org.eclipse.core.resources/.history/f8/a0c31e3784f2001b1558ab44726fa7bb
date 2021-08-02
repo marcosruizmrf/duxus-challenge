@@ -1,0 +1,37 @@
+package com.team.roster.services;
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.team.roster.domain.ComposicaoTime;
+import com.team.roster.domain.Integrante;
+import com.team.roster.repositories.ComposicaoTimeRepository;
+
+@Service
+public class ComposicaoTimeService {
+	
+	@Autowired
+	private ComposicaoTimeRepository repository;
+
+	public List<ComposicaoTime> findAll() {
+		List<ComposicaoTime> list = repository.findAll();
+		return list;
+	}
+
+	public ComposicaoTime save(ComposicaoTime composicaoTime) {
+		composicaoTime.setId(null);
+		return repository.save(composicaoTime);
+	}
+	
+	public List<Integrante> findByNomeComum(String funcao) {
+		List<Integrante> obj = repository.findByNomeComum(funcao);
+		return obj;
+	}
+	
+	
+
+
+}

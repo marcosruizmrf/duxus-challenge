@@ -1,0 +1,17 @@
+package com.team.roster.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.team.roster.domain.ComposicaoTime;
+import com.team.roster.domain.Integrante;
+
+@Repository
+public interface ComposicaoTimeRepository extends JpaRepository<ComposicaoTime, Long>{
+
+	List<Integrante> findByFuncaoComum(String funcao);
+
+
+}

@@ -1,0 +1,112 @@
+package com.team.roster.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Table(name = "time")
+@Entity
+public class Time implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private Date data;
+	
+	@OneToMany(mappedBy = "time")
+	@Column(name = "time_id")
+	private List<Integrante> integrantes;
+	
+	@OneToMany(mappedBy = "time")
+	private List<ComposicaoTime> composicaoTime;
+	
+	
+	public static Time converter(Time t) {
+		 var time = new Time();
+		 time.setId(t.getId());
+		 time.setData(t.getData());
+		 time.setComposicaoTime(t.getComposicaoTime());
+		 
+		 return time;
+	 }
+	
+		
+	public Time() {
+		super();
+	}
+	
+	public Time(Long id, Date data) {
+		super();
+		this.id = id;
+		this.data = data;
+	}
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	
+	public List<ComposicaoTime> getComposicaoTime() {
+		return composicaoTime;
+	}
+
+
+	public void setComposicaoTime(List<ComposicaoTime> composicaoTime) {
+		this.composicaoTime = composicaoTime;
+	}
+
+
+	
+	
+	@Override
+	public String toString() {
+		return "Time [id=" + id + ", data=" + data + ", composicaoTime=" + composicaoTime + "]";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Time other = (Time) obj;
+		return Objects.equals(id, other.id);
+	}	
+
+}

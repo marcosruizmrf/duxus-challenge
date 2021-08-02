@@ -1,0 +1,130 @@
+package com.team.roster.domain;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Table(name = "integrante")
+@Entity
+public class Integrante implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name = "integrante_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String franquia;
+	private String nome;
+	private String funcao;
+
+	
+	
+	 public static Integrante converter(Integrante i) {
+		 var integrante = new Integrante();
+		 integrante.setId(i.getId());
+		 integrante.setFranquia(i.getFranquia());
+		 integrante.setNome(i.getNome());
+		 integrante.setFuncao(i.getFuncao());
+		 
+		 return integrante;
+	 }
+	
+
+	public Integrante() {
+		super();
+	}
+
+	public Integrante(Long id, String franquia, String nome, String funcao, ComposicaoTime composicaoTime) {
+		super();
+		this.id = id;
+		this.franquia = franquia;
+		this.nome = nome;
+		this.funcao = funcao;
+		this.composicaoTime = composicaoTime;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getFranquia() {
+		return franquia;
+	}
+
+
+	public void setFranquia(String franquia) {
+		this.franquia = franquia;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getFuncao() {
+		return funcao;
+	}
+
+
+	public void setFuncao(String funcao) {
+		this.funcao = funcao;
+	}
+
+
+	public ComposicaoTime getComposicaoTime() {
+		return composicaoTime;
+	}
+
+
+	public void setComposicaoTime(ComposicaoTime composicaoTime) {
+		this.composicaoTime = composicaoTime;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Integrante [id=" + id + ", franquia=" + franquia + ", nome=" + nome + ", funcao=" + funcao + ", composicaoTime=" + composicaoTime + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Integrante other = (Integrante) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+
+}

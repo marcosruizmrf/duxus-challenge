@@ -1,0 +1,38 @@
+package com.team.roster.services;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.team.roster.domain.Integrante;
+import com.team.roster.domain.Time;
+import com.team.roster.repositories.IntegranteRepository;
+
+import javassist.tools.rmi.ObjectNotFoundException;
+
+@Service
+public class IntegranteService {
+
+	@Autowired
+	private IntegranteRepository repository;
+
+	public List<Integrante> findAll() {
+		List<Integrante> list = repository.findAll();
+		return list;
+	}
+
+	public Integrante save(Integrante integrante) {
+		integrante.setId(null);
+		return repository.save(integrante);
+	}
+
+	public Optional<Integrante> findByNomeConstains(String name) {
+		Optional<Integrante> obj = repository.findByNomeContains(name);
+		return obj;
+	}
+
+
+}

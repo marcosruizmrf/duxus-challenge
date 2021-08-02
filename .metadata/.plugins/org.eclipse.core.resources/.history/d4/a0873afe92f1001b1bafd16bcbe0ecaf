@@ -1,0 +1,13 @@
+package com.team.roster.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.team.roster.domain.Integrante;
+
+public interface IntegranteRepository extends JpaRepository<Integrante, Long>{
+
+
+
+}
